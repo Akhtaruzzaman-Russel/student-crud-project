@@ -13,6 +13,7 @@ def AddStudentPage(request):
         age=request.POST.get("sAge")
         course=request.POST.get("Course")
         address=request.POST.get("Address")
+        image=request.FILES.get("Image")
 
         studentdetails=StudentInfoModel(
             name=name,
@@ -20,6 +21,7 @@ def AddStudentPage(request):
             age=age,
             course=course,
             address=address,
+            image=image,
         )
         studentdetails.save()
 
@@ -68,6 +70,7 @@ def UpdateStudent(request):
         address=request.POST.get('Address')
 
         upStudent=StudentInfoModel(
+            id=myid,
             name=name,
             email=email,
             age=age,
@@ -76,4 +79,7 @@ def UpdateStudent(request):
         )
         upStudent.save()
 
-    return redirect("StudentListPage.html")
+    return redirect("StudentListPage")
+
+def ViewStudent(request,myid):
+    return render(request,"ViewStudent.html")

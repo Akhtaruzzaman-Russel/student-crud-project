@@ -7,3 +7,4 @@ class StudentInfoModel(models.Model):
     age=models.IntegerField(null=True)
     course=models.CharField(max_length=100,null=True)
     address=models.TextField(null=True)
+    image=models.ImageField(upload_to='static/img/',null=True)

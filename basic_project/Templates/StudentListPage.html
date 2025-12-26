@@ -11,6 +11,7 @@
     <th>Age:</th>
     <th>Course:</th>
     <th>Address:</th>
+    <th>Photo:</th>
     <th>Action</th>
   </tr>
   {% for i in studentdata %}
@@ -21,8 +22,12 @@
     <td>{{i.course}}</td>
     <td>{{i.address}}</td>
     <td>
+      <img src="/{{i.image}}" alt="" width="50px">
+    </td>
+    <td>
       <a href="{% url 'EditStudentPage' i.id %}" style="text-decoration: none; color:blue;">Edit | </a> 
-      <a href="{% url 'DeleteStudent' i.id %}" style="text-decoration: none; color:red;">Delete</a>
+      <a href="{% url 'DeleteStudent' i.id %}" style="text-decoration: none; color:red;">Delete</a> |
+      <a href="{% url 'ViewStudent' i.id %}" style="text-decoration: none; color:green;">View</a>
     </td>
   </tr>
 {% endfor %}
