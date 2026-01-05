@@ -68,16 +68,45 @@ def UpdateStudent(request):
         age=request.POST.get('sAge')
         course=request.POST.get('Course')
         address=request.POST.get('Address')
+        PrevousImage=request.POST.get('PrevousImage')
+        image=request.FILES.get("Image")
 
-        upStudent=StudentInfoModel(
+        if image:
+            upStudent=StudentInfoModel(
             id=myid,
             name=name,
             email=email,
             age=age,
             course=course,
             address=address,
-        )
-        upStudent.save()
+            image=image,
+            )
+
+        else:
+            upStudent=StudentInfoModel(
+            id=myid,
+            name=name,
+            email=email,
+            age=age,
+            course=course,
+            address=address,
+            image=PrevousImage,
+            )
+            upStudent.save()
+
+
+
+
+        # upStudent=StudentInfoModel(
+        #     id=myid,
+        #     name=name,
+        #     email=email,
+        #     age=age,
+        #     course=course,
+        #     address=address,
+        #     image=image,
+        # )
+        # upStudent.save()
 
     return redirect("StudentListPage")
 
